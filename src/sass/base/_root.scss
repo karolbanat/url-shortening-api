@@ -1,0 +1,53 @@
+@use './mixins';
+
+:root {
+	// colors
+	--clr-primary-400: hsl(256, 26%, 33%);
+	--clr-primary-700: hsl(257, 27%, 26%);
+
+	--clr-secondary-400: hsl(0, 87%, 67%);
+
+	--clr-accent-400: hsl(180, 57%, 75%);
+	--clr-accent-700: hsl(180, 66%, 49%);
+
+	--clr-neutral-300: hsl(225, 33%, 95%);
+	--clr-neutral-400: hsl(0, 0%, 75%);
+	--clr-neutral-500: hsl(257, 7%, 63%);
+	--clr-neutral-700: hsl(255, 11%, 22%);
+	--clr-neutral-900: hsl(260, 8%, 14%);
+
+	--clr-white: hsl(0, 0%, 100%);
+
+	// font families
+	--ff-primary: 'Poppins', sans-serif;
+
+	// font weights
+	--fw-400: 500;
+	--fw-700: 700;
+
+	// font sizes
+	--fz-100: 1.2rem;
+	--fz-300: 1.6rem;
+	--fz-400: 1.8rem;
+	--fz-500: 2rem;
+	--fz-600: 2.2rem;
+	--fz-700: 2.8rem;
+	--fz-900: 4.2rem;
+
+	// border radius
+	--borr-100: 0.5rem;
+	--borr-300: 1rem;
+	--borr-900: 100vmax;
+
+	// gaps
+	--gap-300: 1.6rem;
+	--gap-400: 2.4rem;
+	--gap-500: 3rem;
+	--gap-900: 9.2rem;
+
+	@include mixins.mq(medium) {
+		--fz-100: var(--fz-300);
+		--fz-700: 4rem;
+		--fz-900: 8rem;
+	}
+}

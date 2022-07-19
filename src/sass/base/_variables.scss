@@ -1,1 +1,8 @@
-$breakpoints: ();
+$breakpoints: (
+	//576px
+	small: 36em,
+	//768px
+	medium: 48em,
+	//992px
+	large: 62em
+);
