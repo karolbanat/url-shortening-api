@@ -1,0 +1,28 @@
+@use '../base/mixins';
+
+.even-columns {
+	--gap: var(--gap-400);
+
+	display: grid;
+	gap: var(--gap);
+
+	@include mixins.mq(medium) {
+		grid-auto-flow: column;
+		grid-auto-columns: 1fr;
+	}
+
+	&--small {
+		@include mixins.mq(small) {
+			grid-auto-flow: column;
+			grid-auto-columns: 1fr;
+		}
+	}
+
+	&--reversed {
+		@include mixins.mq(medium) {
+			& > *:last-child {
+				grid-column: -1;
+			}
+		}
+	}
+}

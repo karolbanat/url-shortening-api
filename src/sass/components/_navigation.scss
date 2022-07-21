@@ -1,0 +1,169 @@
+@use '../base/mixins';
+
+.navigation {
+	--padding-top: clamp(var(--spacing-rem-600), 4vw, var(--spacing-rem-650));
+	--padding-bottom: clamp(var(--spacing-rem-400), 6vw, var(--spacing-rem-800));
+
+	// layout
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--gap-500);
+
+	// spacing
+	padding: {
+		top: var(--padding-top);
+		bottom: var(--padding-bottom);
+	}
+
+	@include mixins.mq(medium) {
+		justify-content: flex-start;
+	}
+
+	// --- elements
+	&__burger-btn {
+		--width: 4rem;
+		--button-color: var(--clr-neutral-500);
+
+		// layout
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		// spacing
+		padding: 0.25em;
+		width: var(--width);
+		aspect-ratio: 1;
+
+		// looks
+		border: none;
+		background: none;
+
+		@include mixins.mq(medium) {
+			display: none;
+		}
+
+		// button lines
+		&::before,
+		&::after {
+			content: '';
+		}
+
+		& > span,
+		&::before,
+		&::after {
+			display: inline-block;
+			width: 100%;
+			height: 0.4rem;
+			background-color: var(--button-color);
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--button-color);
+		}
+	}
+
+	// container for nav links and buttons
+	&__nav {
+		display: flex;
+		gap: var(--gap-300);
+		width: 100%;
+
+		// max-width media query, for smaller screens
+		@include mixins.max-mq(medium) {
+			--padding-top: var(--spacing-rem-400);
+			--padding-bottom: var(--spacing-rem-600);
+			--padding-inline: var(--spacing-rem-400);
+
+			// layout mobile
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			transform: translateY(100%);
+			z-index: 10;
+			flex-direction: column;
+			display: none;
+
+			// spacing
+			padding: {
+				top: var(--padding-top);
+				bottom: var(--padding-bottom);
+				inline: var(--padding-inline);
+			}
+
+			// font
+			font-size: var(--fz-400);
+
+			// looks
+			background-color: var(--clr-primary-700);
+			border-radius: var(--borr-300);
+
+			&.active {
+				display: block;
+			}
+		}
+
+		// min width media query, for bigger screens
+		@include mixins.mq(medium) {
+			justify-content: space-between;
+			font-size: var(--fz-300);
+		}
+	}
+
+	// container for nav links
+	&__nav-links {
+		// max-width media query, for smaller screens
+		@include mixins.max-mq(medium) {
+			padding-bottom: var(--spacing-rem-300);
+			border-bottom: 1px solid var(--clr-neutral-500);
+		}
+
+		// min width media query, for bigger screens
+		@include mixins.mq(medium) {
+			display: flex;
+			align-items: center;
+			gap: var(--gap-500);
+		}
+	}
+
+	// links
+	&__nav-link {
+		font-weight: var(--fw-700);
+		text-decoration: none;
+
+		color: var(--clr-link, initial);
+
+		// max-width media query, for smaller screens
+		@include mixins.max-mq(medium) {
+			--padding-block: var(--spacing-rem-300, 1em);
+			--clr-link: var(--clr-white);
+
+			display: block;
+
+			padding-block: var(--padding-block);
+			text-align: center;
+			// color: var(--clr-white);
+		}
+
+		// min width media query, for bigger screens
+		@include mixins.mq(medium) {
+			--clr-link: var(--clr-neutral-500);
+
+			display: inline-block;
+
+			transition: color 0.35s ease;
+			cursor: pointer;
+
+			&:hover,
+			&:focus-visible {
+				--clr-link: var(--clr-neutral-900);
+			}
+		}
+	}
+
+	// button
+	&__btn {
+		font-size: inherit;
+	}
+}

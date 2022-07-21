@@ -12,7 +12,7 @@
 
 	--clr-neutral-300: hsl(225, 33%, 95%);
 	--clr-neutral-400: hsl(0, 0%, 75%);
-	--clr-neutral-500: hsl(257, 7%, 63%);
+	--clr-neutral-500: hsl(258, 7%, 63%);
 	--clr-neutral-700: hsl(255, 11%, 22%);
 	--clr-neutral-900: hsl(260, 8%, 14%);
 
@@ -39,11 +39,23 @@
 	--borr-300: 1rem;
 	--borr-900: 100vmax;
 
+	// spacing rem
+	--spacing-rem-200: 1.2rem;
+	--spacing-rem-300: 1.6rem;
+	--spacing-rem-400: 2.4rem;
+	--spacing-rem-500: 3.2rem;
+	--spacing-rem-550: 3.6rem;
+	--spacing-rem-600: 4rem;
+	--spacing-rem-650: 4.8rem;
+	--spacing-rem-700: 6.4rem;
+	--spacing-rem-800: 8rem;
+	--spacing-rem-900: 9.2rem;
+
 	// gaps
-	--gap-300: 1.6rem;
-	--gap-400: 2.4rem;
+	--gap-300: var(--spacing-rem-300);
+	--gap-400: var(--spacing-rem-400);
 	--gap-500: 3rem;
-	--gap-900: 9.2rem;
+	--gap-900: var(--spacing-rem-900);
 
 	@include mixins.mq(medium) {
 		--fz-100: var(--fz-300);

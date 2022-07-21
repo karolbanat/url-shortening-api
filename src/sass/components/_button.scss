@@ -1,0 +1,46 @@
+@use '../base/mixins';
+
+.button {
+	--padding-block: 0.75em;
+	--padding-inline: 1.5em;
+	--border-radius: var(--borr-900);
+	--bg-color: var(--clr-accent-700);
+	--bg-color-hover: var(--clr-accent-400);
+	--text-color: var(--clr-white);
+	--text-color-hover: var(--clr-white);
+
+	// spacing
+	padding: {
+		inline: var(--padding-inline);
+		block: var(--padding-block);
+	}
+
+	// font
+	font-size: var(--fz-400);
+	font-weight: var(--fw-700);
+	color: var(--text-color);
+
+	// looks
+	background-color: var(--bg-color);
+	border: none;
+	border-radius: var(--border-radius);
+	transition: color 0.35s ease, background-color 0.35s ease;
+	cursor: pointer;
+
+	&:hover,
+	&:focus-visible {
+		--bg-color: var(--bg-color-hover);
+		--text-color: var(--text-color-hover);
+	}
+
+	// modifiers
+	&--link {
+		--bg-color: transparent;
+		--bg-color-hover: transparent;
+
+		@include mixins.mq(medium) {
+			--text-color: var(--clr-neutral-500);
+			--text-color-hover: var(--clr-neutral-700);
+		}
+	}
+}

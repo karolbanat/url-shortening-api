@@ -1,0 +1,11 @@
+@use '../base/mixins';
+
+.button-group {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-300);
+
+	@include mixins.mq(medium) {
+		flex-direction: row;
+	}
+}

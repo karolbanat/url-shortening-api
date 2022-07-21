@@ -9,7 +9,7 @@
     <link rel="icon"
           type="image/png"
           sizes="32x32"
-          href="./images/favicon-32x32.png">
+          href="./dist/images/favicon-32x32.png">
     <link rel="preconnect"
           href="https://fonts.googleapis.com">
     <link rel="preconnect"
@@ -32,26 +32,28 @@
             <nav class="navigation">
                 <img src="./dist/images/logo.svg"
                      alt="">
-                <button class="navigation__burger-btn"></button>
+                <button class="navigation__burger-btn">
+                    <span></span>
+                </button>
                 <div class="navigation__nav">
                     <ul class="navigation__nav-links">
                         <li><a href="#"
-                               class="link navigation__nav-link">Features</a></li>
+                               class="navigation__nav-link">Features</a></li>
                         <li><a href="#"
-                               class="link navigation__nav-link">Pricing</a></li>
+                               class="navigation__nav-link">Pricing</a></li>
                         <li><a href="#"
-                               class="link navigation__nav-link">Resources</a></li>
+                               class="navigation__nav-link">Resources</a></li>
                     </ul>
                     <div class="button-group">
-                        <button class="link">Login</button>
-                        <button class="button">Sign Up</button>
+                        <button class="button button--link navigation__btn">Login</button>
+                        <button class="button navigation__btn">Sign Up</button>
                     </div>
                 </div>
             </nav>
         </div>
 
         <div class="container">
-            <div class="even-columns">
+            <div class="even-columns even-columns--reversed">
                 <img src="./dist/images/illustration-working.svg"
                      alt="Illustration of person working."
                      class="header__image">
@@ -94,7 +96,7 @@
                     <p class="text-limited">Track how your links are performing across the web with our
                         advanced statistics dashboard.</p>
                 </header>
-                <ul class="even-columns statistics__cards">
+                <ul class="statistics__cards | even-columns">
                     <li>
                         <article aria-labelledby="brand-recognition"
                                  class="card">
@@ -130,15 +132,15 @@
                     </li>
                 </ul>
             </section>
-
-            <section class="boost | flex-center bg-primary-700">
-                <h2 class="section-heading boost__heading">Boost your links today</h2>
-                <button class="button">Get Started</button>
-            </section>
         </div>
+
+        <section class="boost | flex-center bg-primary-700">
+            <h2 class="section-heading boost__heading">Boost your links today</h2>
+            <button class="button">Get Started</button>
+        </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer | bg-neutral-900">
         <div class="container">
             <div class="even-columns">
                 <img src="./dist/images/logo.svg"
