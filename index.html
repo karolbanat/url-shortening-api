@@ -83,9 +83,9 @@
                         <p id="shorten-error"></p>
                     </div>
                     <button type="submit"
-                            class="button-form">Shorten It!</button>
+                            class="button button--form">Shorten It!</button>
                 </form>
-                <ul class="shortened-links-list"></ul>
+                <ul class="shortened-links-list hidden"></ul>
             </section>
         </div>
 
@@ -211,14 +211,13 @@
     </footer>
 
     <template>
-        <li>
+        <li class="shortened-links-list__item">
             <p data-original-url=""
                class="shortened-links-list__original"></p>
             <div class="shortened-links-list__result">
-                <span data-result-url=""
-                      class="shortened-links-list__original"></span>
+                <span data-result-url=""></span>
                 <button data-url-to-copy=""
-                        class="button-copy">Copy</button>
+                        class="button button--copy">Copy</button>
             </div>
         </li>
     </template>

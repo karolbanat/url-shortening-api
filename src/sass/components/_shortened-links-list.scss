@@ -1,0 +1,75 @@
+@use '../base/mixins';
+
+.shortened-links-list {
+	--gap: var(--gap-400);
+
+	display: grid;
+	gap: var(--gap);
+
+	line-height: 1.1;
+	color: var(--clr-neutral-700);
+
+	@include mixins.mq(medium) {
+		--gap: var(--gap-300);
+	}
+
+	&.hidden {
+		display: none;
+	}
+
+	// --- elements
+	&__item {
+		--padding-block: var(--spacing-rem-300);
+		--padding-inline: var(--spacing-rem-300);
+
+		padding: {
+			block: var(--padding-block);
+			inline: var(--padding-inline);
+		}
+
+		background-color: var(--clr-white);
+		border-radius: var(--borr-100);
+
+		@include mixins.mq(medium) {
+			--padding-inline: var(--spacing-rem-400);
+
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+
+	&__original {
+		margin-bottom: 1rem;
+
+		@include mixins.mq(medium) {
+			margin-bottom: 0;
+		}
+	}
+
+	&__result {
+		--gap: var(--gap-200);
+		--padding-top: var(--spacing-rem-300);
+
+		display: flex;
+		flex-direction: column;
+		gap: var(--gap);
+
+		padding-top: var(--padding-top);
+
+		border-top: 1px solid var(--clr-neutral-300);
+
+		@include mixins.mq(medium) {
+			--gap: var(--gap-400);
+			--padding-top: 0;
+
+			flex-direction: row;
+			align-items: center;
+			border-top: none;
+		}
+
+		& span {
+			color: var(--clr-accent-700);
+		}
+	}
+}
