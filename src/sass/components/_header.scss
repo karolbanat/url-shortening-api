@@ -1,0 +1,46 @@
+@use '../base/mixins';
+
+.header {
+	padding-bottom: 15rem; // space for form intersection
+	text-align: center;
+	overflow: hidden;
+
+	@include mixins.mq(medium) {
+		text-align: initial;
+	}
+
+	// --- elements
+	&__body {
+		// overriding from even-columns
+		--gap: var(--spacing-rem-600);
+		align-items: center;
+		grid-auto-columns: 1.15fr 1fr;
+
+		@include mixins.mq(medium) {
+			--gap: 0;
+		}
+	}
+
+	&__heading {
+		margin-bottom: var(--spacing-rem-100);
+		font-size: clamp(var(--fz-900), 6vw, 8rem);
+	}
+
+	&__text {
+		margin-bottom: var(--spacing-rem-500);
+		font-size: var(--fz-400);
+
+		@include mixins.mq(medium) {
+			font-size: var(--fz-600);
+		}
+	}
+
+	&__image {
+		margin-left: 5vw;
+
+		@include mixins.mq(medium) {
+			max-width: unset;
+			margin-right: -100vw;
+		}
+	}
+}
