@@ -6,6 +6,8 @@
 @import './layout/even-columns';
 
 @import './utility/background-colors';
+@import './utility/section-heading';
+@import './utility/text-limited';
 
 @import './components/button';
 @import './components/button-group';
@@ -14,3 +16,5 @@
 @import './components/shorten';
 @import './components/shorten-form';
 @import './components/shortened-links-list';
+@import './components/statistics';
+@import './components/card';

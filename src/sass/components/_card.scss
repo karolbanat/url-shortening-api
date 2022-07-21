@@ -1,0 +1,55 @@
+@use '../base/mixins';
+
+.card {
+	// layout
+	position: relative;
+	text-align: center;
+
+	// spacing
+	padding: {
+		inline: var(--spacing-rem-500);
+		top: var(--spacing-rem-800);
+		bottom: var(--spacing-rem-550);
+	}
+	height: 100%;
+
+	// looks
+	background-color: var(--clr-white);
+	border-radius: var(--borr-100);
+
+	@include mixins.mq(medium) {
+		text-align: initial;
+	}
+
+	// --- elements
+	&__heading {
+		margin-bottom: var(--spacing-rem-300);
+		font-size: var(--fz-600);
+	}
+
+	& p {
+		font-size: var(--fz-200);
+	}
+
+	&__icon {
+		--width: 8.8rem;
+
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: grid;
+		place-items: center;
+
+		width: var(--width);
+		aspect-ratio: 1;
+		border-radius: 50%;
+
+		background-color: var(--clr-primary-700);
+
+		@include mixins.mq(medium) {
+			left: var(--spacing-rem-500);
+			transform: translateY(-50%);
+		}
+	}
+}

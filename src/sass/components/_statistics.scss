@@ -1,0 +1,42 @@
+@use '../base/mixins';
+
+.statistics {
+	margin-block: clamp(var(--spacing-rem-800), 10vw, 12rem);
+
+	& > header {
+		margin-bottom: var(--spacing-rem-900);
+	}
+
+	&__cards {
+		--gap: var(--gap-900);
+
+		@include mixins.mq(medium) {
+			--gap: var(--gap-500);
+		}
+
+		// accent line
+		position: relative;
+
+		&::before {
+			--size: 0.8rem;
+			content: '';
+			position: absolute;
+			left: 50%;
+			top: 0;
+			transform: translateX(-50%);
+
+			height: 100%;
+			width: var(--size);
+			background-color: var(--clr-accent-700);
+
+			@include mixins.mq(medium) {
+				left: 0;
+				top: 50%;
+				transform: translateY(-50%);
+
+				width: 100%;
+				height: var(--size);
+			}
+		}
+	}
+}
