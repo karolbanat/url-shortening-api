@@ -11,8 +11,8 @@ This is a solution to the [Shortly URL shortening API Challenge challenge on Fro
 
 ### Links
 
-- Solution URL: [Frontend Mentor Solution Page](https://your-solution-url.com)
-- Live Site URL: [GitHub Pages Site](https://your-live-site-url.com)
+- Solution URL: [Frontend Mentor Solution Page](https://www.frontendmentor.io/solutions/url-shortening-api-3WacNgDry_)
+- Live Site URL: [GitHub Pages Site](https://karolbanat.github.io/url-shortening-api/)
 
 ### Useful resources
 
