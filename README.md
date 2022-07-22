@@ -21,4 +21,4 @@ This is a solution to the [Shortly URL shortening API Challenge challenge on Fro
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Frontend Mentor - [@karolbanat](https://www.frontendmentor.io/profile/karolbanat)
