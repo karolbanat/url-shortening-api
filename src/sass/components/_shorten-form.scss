@@ -9,6 +9,8 @@
 	--bg-pos: top right;
 	--bg-size: cover;
 
+	--clr-error: var(--clr-secondary-400);
+
 	// layout
 	display: grid;
 	gap: var(--gap);
@@ -67,5 +69,17 @@
 			color: var(--text-color);
 			opacity: 0.5;
 		}
+
+		&.error {
+			--text-color: var(--clr-error);
+			outline: 2px solid var(--clr-error);
+		}
+	}
+
+	&__error {
+		margin-top: 0.4rem;
+		font-size: var(--fz-100);
+		font-style: italic;
+		color: var(--clr-error);
 	}
 }

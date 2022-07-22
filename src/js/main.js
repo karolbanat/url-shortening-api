@@ -56,11 +56,15 @@ const handleBurgerBtn = () => {
 
 const shortenUrl = () => {
 	if (shortenInput.value) {
+		hideError();
+
 		const url = shortenInput.value;
 
 		fetch(`${API_URL_BASE}/shorten?url=${url}`)
 			.then((res) => res.json())
 			.then((res) => {
+				if (!res.ok) throw new Error('');
+
 				// get data from response
 				const result = res.result;
 				const shortLink = result.short_link;
@@ -85,8 +89,10 @@ const shortenUrl = () => {
 				localStorage.setItem('links', JSON.stringify(links));
 			})
 			.catch((err) => {
-				// something to do when error eccurs
+				showError(err.message);
 			});
+	} else {
+		showError('Input field cannot be empty.');
 	}
 };
 
@@ -132,6 +138,16 @@ const handleCopy = (e) => {
 			e.target.innerText = 'Copy';
 		}, 2000);
 	});
+};
+
+const showError = (msg) => {
+	shortenInput.classList.add('error');
+	shortenError.innerText = `${msg}`;
+};
+
+const hideError = () => {
+	shortenInput.classList.remove('error');
+	shortenError.innerText = '';
 };
 
 document.addEventListener('DOMContentLoaded', main);
