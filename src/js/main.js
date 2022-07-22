@@ -74,7 +74,7 @@ const shortenUrl = () => {
 			})
 			.then((data) => {
 				// if link already shortened, throw error and do nothing
-				if (data.originalLink in links) throw new Error();
+				if (data.originalLink in links) throw new Error('Link already shortened.');
 
 				// else, save to object in this file
 				links[data.originalLink] = data.shortLink;
@@ -83,6 +83,7 @@ const shortenUrl = () => {
 			.then(({ originalLink, shortLink }) => {
 				// append new item to the list
 				appendListItem(originalLink, shortLink);
+				toggleListVisibility();
 			})
 			.then(() => {
 				// save to local storage
@@ -107,6 +108,7 @@ const loadLinksFromLocalStorage = () => {
 			}
 		}
 	}
+	toggleListVisibility();
 };
 
 const appendListItem = (original_url, result_url) => {
@@ -138,6 +140,10 @@ const handleCopy = (e) => {
 			e.target.innerText = 'Copy';
 		}, 2000);
 	});
+};
+
+const toggleListVisibility = () => {
+	shortenedList.classList.toggle('hidden', !shortenedList.children.length);
 };
 
 const showError = (msg) => {
