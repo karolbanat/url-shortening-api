@@ -4,7 +4,7 @@
 	padding-block: clamp(var(--spacing-rem-675), 8vw, var(--spacing-rem-750));
 
 	&__container {
-		--gap: var(--spacing-rem-650);
+		--gap: var(--gap-600);
 
 		display: flex;
 		flex-direction: column;

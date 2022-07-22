@@ -1,4 +1,5 @@
 @use '../base/mixins';
+@use '../base/animations';
 
 .navigation {
 	--padding-top: clamp(var(--spacing-rem-600), 4vw, var(--spacing-rem-650));
@@ -100,8 +101,9 @@
 			background-color: var(--clr-primary-700);
 			border-radius: var(--borr-300);
 
-			&.active {
+			&.visible {
 				display: block;
+				animation: fade-in 0.35s ease forwards;
 			}
 		}
 

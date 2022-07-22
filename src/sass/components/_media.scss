@@ -8,6 +8,7 @@
 	&__icon {
 		display: inline-block;
 		text-decoration: none;
+		cursor: pointer;
 
 		& svg path {
 			fill: var(--clr-white);
