@@ -1,4 +1,5 @@
 @use '../base/mixins';
+@use '../base/animations';
 
 .shortened-links-list {
 	--gap: var(--gap-400);
@@ -29,6 +30,8 @@
 
 		background-color: var(--clr-white);
 		border-radius: var(--borr-100);
+
+		animation: slide-from-left 0.4s ease-in-out;
 
 		@include mixins.mq(medium) {
 			--padding-inline: var(--spacing-rem-400);

@@ -1,11 +1,137 @@
-const burgerBtn = document.querySelector('.navigation__burger-btn');
-const primaryNav = document.querySelector('#primary-nav');
+let burgerBtn;
+let primaryNav;
+
+let shortenInput;
+let shortenBtn;
+let shortenError;
+
+let shortenedList;
+let copyButtons;
+
+let shortenItemTemplate;
+
+// variables
+const API_URL_BASE = 'https://api.shrtco.de/v2/';
+let links = {};
+
+// functions
+const main = () => {
+	prepareDOMElements();
+	loadLinksFromLocalStorage();
+	prepareCopyButtons(); // load copy buttons after links are added
+	prepareDOMEvents();
+};
+
+const prepareDOMElements = () => {
+	burgerBtn = document.querySelector('.navigation__burger-btn');
+	primaryNav = document.querySelector('#primary-nav');
+
+	shortenInput = document.querySelector('#shorten-url');
+	shortenBtn = document.querySelector('#shorten-btn');
+	shortenError = document.querySelector('#shorten-error');
+
+	shortenedList = document.querySelector('#shortened-links-list');
+	shortenItemTemplate = document.querySelector('#shortened-list-item-template');
+};
+
+const prepareDOMEvents = () => {
+	burgerBtn.addEventListener('click', handleBurgerBtn);
+
+	shortenBtn.addEventListener('click', (e) => {
+		e.preventDefault();
+		shortenUrl();
+	});
+
+	copyButtons.forEach((btn) => btn.addEventListener('click', handleCopy));
+};
+
+const prepareCopyButtons = () => {
+	copyButtons = shortenedList.querySelectorAll('[data-url-to-copy');
+};
 
 const handleBurgerBtn = () => {
 	burgerBtn.setAttribute('aria-expanded', String(!primaryNav.classList.contains('visible')));
-
 	primaryNav.classList.toggle('visible');
 };
 
-// event handlers
-burgerBtn.addEventListener('click', handleBurgerBtn);
+const shortenUrl = () => {
+	if (shortenInput.value) {
+		const url = shortenInput.value;
+
+		fetch(`${API_URL_BASE}/shorten?url=${url}`)
+			.then((res) => res.json())
+			.then((res) => {
+				// get data from response
+				const result = res.result;
+				const shortLink = result.short_link;
+				const originalLink = result.original_link;
+				// and return it further
+				return { originalLink, shortLink };
+			})
+			.then((data) => {
+				// if link already shortened, throw error and do nothing
+				if (data.originalLink in links) throw new Error();
+
+				// else, save to object in this file
+				links[data.originalLink] = data.shortLink;
+				return data;
+			})
+			.then(({ originalLink, shortLink }) => {
+				// append new item to the list
+				appendListItem(originalLink, shortLink);
+			})
+			.then(() => {
+				// save to local storage
+				localStorage.setItem('links', JSON.stringify(links));
+			})
+			.catch((err) => {
+				// something to do when error eccurs
+			});
+	}
+};
+
+const loadLinksFromLocalStorage = () => {
+	const storageLinks = JSON.parse(localStorage.getItem('links'));
+	if (storageLinks) {
+		links = storageLinks;
+		for (const key in storageLinks) {
+			if (Object.hasOwnProperty.call(storageLinks, key)) {
+				const value = storageLinks[key];
+				appendListItem(key, value);
+			}
+		}
+	}
+};
+
+const appendListItem = (original_url, result_url) => {
+	const listItem = shortenItemTemplate.content.cloneNode(true);
+	const originalUrlElement = listItem.querySelector('[data-original-url]');
+	const resultUrlElement = listItem.querySelector('[data-result-url]');
+	const copyBtn = listItem.querySelector('[data-url-to-copy]');
+
+	originalUrlElement.setAttribute('data-original-url', original_url);
+	originalUrlElement.innerText = original_url;
+
+	resultUrlElement.setAttribute('data-result-url', result_url);
+	resultUrlElement.innerText = result_url;
+
+	copyBtn.setAttribute('data-url-to-copy', result_url);
+	copyBtn.addEventListener('click', handleCopy);
+
+	shortenedList.appendChild(listItem);
+};
+
+const handleCopy = (e) => {
+	const urlToCopy = e.target.dataset.urlToCopy;
+	navigator.clipboard.writeText(urlToCopy).then(() => {
+		e.target.classList.add('copied');
+		e.target.innerText = 'Copied!';
+
+		setTimeout(() => {
+			e.target.classList.remove('copied');
+			e.target.innerText = 'Copy';
+		}, 2000);
+	});
+};
+
+document.addEventListener('DOMContentLoaded', main);
