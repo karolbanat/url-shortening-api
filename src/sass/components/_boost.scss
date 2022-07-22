@@ -6,12 +6,11 @@
 	// background image
 	--bg-image: url('../images/bg-boost-mobile.svg');
 	--bg-pos: top right;
-	--bg-size: contain;
+	--bg-size: cover;
 
 	@include mixins.background-image(var(--bg-image), var(--bg-pos), var(--bg-size));
 
 	@include mixins.mq(medium) {
 		--bg-image: url('../images/bg-boost-desktop.svg');
-		--bg-size: cover;
 	}
 }
