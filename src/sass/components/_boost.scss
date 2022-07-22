@@ -1,0 +1,17 @@
+@use '../base/mixins';
+
+.boost {
+	padding-block: clamp(var(--spacing-rem-700), 15rem - 10vw, var(--spacing-rem-900));
+
+	// background image
+	--bg-image: url('../images/bg-boost-mobile.svg');
+	--bg-pos: top right;
+	--bg-size: contain;
+
+	@include mixins.background-image(var(--bg-image), var(--bg-pos), var(--bg-size));
+
+	@include mixins.mq(medium) {
+		--bg-image: url('../images/bg-boost-desktop.svg');
+		--bg-size: cover;
+	}
+}

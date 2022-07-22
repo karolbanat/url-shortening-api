@@ -1,0 +1,21 @@
+.media {
+	display: flex;
+	align-items: center;
+	gap: var(--gap-400);
+
+	font-size: var(--fz-600);
+
+	&__icon {
+		display: inline-block;
+		text-decoration: none;
+
+		& svg path {
+			fill: var(--clr-white);
+			transition: fill 0.35s ease;
+		}
+
+		&:hover svg path {
+			fill: var(--clr-accent-700);
+		}
+	}
+}

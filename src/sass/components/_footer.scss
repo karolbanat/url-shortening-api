@@ -1,0 +1,51 @@
+@use '../base/mixins';
+
+.footer {
+	padding-block: clamp(var(--spacing-rem-675), 8vw, var(--spacing-rem-750));
+
+	&__container {
+		--gap: var(--spacing-rem-650);
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--gap);
+		text-align: center;
+
+		@include mixins.mq(large) {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+			text-align: initial;
+		}
+	}
+
+	&__nav {
+		--gap: clamp(var(--spacing-rem-600), 6vw, var(--spacing-rem-800));
+	}
+
+	&__links {
+		display: grid;
+		gap: var(--spacing-rem-200);
+	}
+
+	&__heading {
+		margin-bottom: var(--spacing-rem-400);
+		color: var(--clr-white);
+	}
+
+	&__link {
+		--link-color: var(--clr-neutral-400);
+
+		display: inline-block;
+		text-decoration: none;
+		color: var(--link-color);
+		transition: color 0.35s ease;
+		cursor: pointer;
+
+		&:hover,
+		&:focus-visible {
+			--link-color: var(--clr-accent-700);
+		}
+	}
+}

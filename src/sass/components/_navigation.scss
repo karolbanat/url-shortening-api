@@ -39,6 +39,7 @@
 		// looks
 		border: none;
 		background: none;
+		cursor: pointer;
 
 		@include mixins.mq(medium) {
 			display: none;

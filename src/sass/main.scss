@@ -1,20 +1,26 @@
-@import './base/root';
-@import './base/reset';
-@import './base/base';
+@use './base/root';
+@use './base/reset';
+@use './base/base';
 
-@import './layout/container';
-@import './layout/even-columns';
+@use './layout/container';
+@use './layout/even-columns';
+@use './layout/flex-center';
 
-@import './utility/background-colors';
-@import './utility/section-heading';
-@import './utility/text-limited';
+@use './components/logo';
+@use './components/button';
+@use './components/button-group';
+@use './components/navigation';
+@use './components/header';
+@use './components/shorten';
+@use './components/shorten-form';
+@use './components/shortened-links-list';
+@use './components/statistics';
+@use './components/card';
+@use './components/boost';
+@use './components/footer';
+@use './components/media';
 
-@import './components/button';
-@import './components/button-group';
-@import './components/navigation';
-@import './components/header';
-@import './components/shorten';
-@import './components/shorten-form';
-@import './components/shortened-links-list';
-@import './components/statistics';
-@import './components/card';
+@use './utility/background-colors';
+@use './utility/text-color';
+@use './utility/section-heading';
+@use './utility/text-limited';
