@@ -2,7 +2,7 @@
 
 .statistics {
 	margin-top: clamp(var(--spacing-rem-800), 10vw, 12rem);
-	padding-bottom: clamp(var(--spacing-rem-800), 15vw, 20rem);
+	padding-bottom: clamp(var(--spacing-rem-800), 10vw, 12rem);
 
 	// --- elements
 	& > header {
@@ -16,14 +16,19 @@
 			--gap: var(--gap-500);
 			--offset: 4.4rem;
 
-			// move second card down
-			& > li:nth-child(2) {
-				transform: translateY(var(--offset));
+			// first card up
+			& > li:first-child {
+				margin-bottom: calc(var(--offset) * 2);
 			}
 
-			// move second card down
-			& > li:nth-child(3) {
-				transform: translateY(calc(var(--offset) * 2));
+			// second card middle
+			& > li:nth-child(2) {
+				margin-block: var(--offset);
+			}
+
+			// third card down
+			& > li:last-child {
+				margin-top: calc(var(--offset) * 2);
 			}
 		}
 
